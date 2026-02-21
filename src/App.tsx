@@ -15,6 +15,7 @@ import ContactPage from "./pages/ContactPage";
 import PortfolioDetailPage from "./pages/PortfolioDetailPage";
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollToTop from "./components/ScrollToTop";
+import AIChatWidget from "./components/AIChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +45,7 @@ function AppContent() {
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
       <AnimatedRoutes />
       <ScrollToTop />
+      <AIChatWidget />
     </>
   );
 }
