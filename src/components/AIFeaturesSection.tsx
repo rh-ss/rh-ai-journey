@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import MiniScene3D from './MiniScene3D';
+import FloatingOrbs from './FloatingOrbs';
 
 // Animated counter hook
 function useCounter(end: number, duration: number, start: boolean, suffix = '', prefix = '') {
@@ -105,12 +106,13 @@ export default function AIFeaturesSection() {
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
+      <FloatingOrbs variant="mixed" intensity={1.5} />
       {/* Animated background */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [200, -200]),
-          background: 'radial-gradient(ellipse at 30% 40%, hsl(260 100% 65% / 0.08), transparent 60%), radial-gradient(ellipse at 70% 60%, hsl(175 100% 50% / 0.06), transparent 50%)',
+          y: useTransform(scrollYProgress, [0, 1], [300, -300]),
+          background: 'radial-gradient(ellipse at 30% 40%, hsl(260 100% 65% / 0.1), transparent 60%), radial-gradient(ellipse at 70% 60%, hsl(175 100% 50% / 0.08), transparent 50%)',
         }}
       />
 

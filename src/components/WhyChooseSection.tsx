@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import MiniScene3D from './MiniScene3D';
+import FloatingOrbs from './FloatingOrbs';
 
 const features = [
   {
@@ -39,11 +40,12 @@ export default function WhyChooseSection() {
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
+      <FloatingOrbs variant="cyan" intensity={1.4} />
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [120, -120]),
-          background: 'radial-gradient(ellipse at 70% 50%, hsl(220 100% 60% / 0.05), transparent 60%)',
+          y: useTransform(scrollYProgress, [0, 1], [200, -200]),
+          background: 'radial-gradient(ellipse at 70% 50%, hsl(220 100% 60% / 0.07), transparent 60%), radial-gradient(ellipse at 20% 70%, hsl(260 100% 65% / 0.05), transparent 50%)',
         }}
       />
 
