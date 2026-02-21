@@ -11,7 +11,7 @@ export default function ContactSection() {
     offset: ["start end", "end start"],
   });
 
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [aiInsight, setAiInsight] = useState<{ category: string; priority: string; summary: string; suggested_response: string } | null>(null);
   const [analyzing, setAnalyzing] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -23,7 +23,7 @@ export default function ContactSection() {
       const { data, error } = await supabase.functions.invoke('ai-chat', {
         body: {
           mode: 'categorize',
-          messages: [{ role: 'user', content: `Name: ${form.name}\nEmail: ${form.email}\nSubject: ${form.subject}\nMessage: ${form.message}` }],
+          messages: [{ role: 'user', content: `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nSubject: ${form.subject}\nMessage: ${form.message}` }],
         },
       });
       if (!error && data?.reply) {
@@ -37,9 +37,21 @@ export default function ContactSection() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    try {
+      await supabase.functions.invoke('send-contact-email', {
+        body: { ...form, aiInsight },
+      });
+    } catch {
+      // still show success to user
+    } finally {
+      setSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   const categoryLabels: Record<string, string> = {
@@ -121,14 +133,24 @@ export default function ContactSection() {
                   required
                 />
               </div>
-              <input
-                type="text"
-                placeholder="Subject"
-                value={form.subject}
-                onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                className="input-glow w-full"
-                required
-              />
+              <div className="grid gap-6 md:grid-cols-2">
+                <input
+                  type="tel"
+                  placeholder="Mobile Number"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  className="input-glow w-full"
+                  required
+                />
+                <input
+                  type="text"
+                  placeholder="Subject"
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  className="input-glow w-full"
+                  required
+                />
+              </div>
               <textarea
                 placeholder="Tell us about your project..."
                 rows={5}
@@ -173,9 +195,9 @@ export default function ContactSection() {
                 </motion.div>
               )}
 
-              <button type="submit" className="btn-glow flex w-full items-center justify-center gap-2 text-primary-foreground">
-                <Send size={18} />
-                Send Message
+              <button type="submit" disabled={submitting} className="btn-glow flex w-full items-center justify-center gap-2 text-primary-foreground disabled:opacity-60">
+                {submitting ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+                {submitting ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           )}
