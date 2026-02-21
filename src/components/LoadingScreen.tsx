@@ -12,9 +12,9 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           clearInterval(interval);
           return 100;
         }
-        return p + 2;
+        return p + 4;
       });
-    }, 30);
+    }, 20);
     return () => clearInterval(interval);
   }, []);
 

@@ -14,7 +14,7 @@ import BlogPage from "./pages/BlogPage";
 import ContactPage from "./pages/ContactPage";
 import PortfolioDetailPage from "./pages/PortfolioDetailPage";
 import LoadingScreen from "./components/LoadingScreen";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop, { ScrollToTopOnNavigate } from "./components/ScrollToTop";
 import AIChatWidget from "./components/AIChatWidget";
 
 const queryClient = new QueryClient();
@@ -43,6 +43,7 @@ function AppContent() {
   return (
     <>
       {loading && <LoadingScreen onComplete={() => setLoading(false)} />}
+      <ScrollToTopOnNavigate />
       <AnimatedRoutes />
       <ScrollToTop />
       <AIChatWidget />
