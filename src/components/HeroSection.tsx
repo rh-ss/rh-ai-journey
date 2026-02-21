@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Scene3D from './Scene3D';
 
 const marqueeWords = [
@@ -78,12 +79,12 @@ export default function HeroSection() {
             transition={{ delay: 1, duration: 0.8 }}
             className="mt-12 flex flex-col gap-4 sm:flex-row"
           >
-            <button className="btn-glow text-primary-foreground">
+            <Link to="/contact" className="btn-glow text-primary-foreground">
               Start Your Project
-            </button>
-            <button className="btn-outline-glow">
+            </Link>
+            <Link to="/services" className="btn-outline-glow">
               Explore Services
-            </button>
+            </Link>
           </motion.div>
         </motion.div>
 

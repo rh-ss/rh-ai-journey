@@ -1,8 +1,10 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import serviceAi from '@/assets/service-ai.jpg';
 import serviceApp from '@/assets/service-app.jpg';
 import serviceSoftware from '@/assets/service-software.jpg';
+import serviceWeb from '@/assets/service-web.jpg';
 
 const services = [
   {
@@ -12,6 +14,14 @@ const services = [
     gradient: 'from-glow-purple to-glow-blue',
     glowColor: 'hsl(260 100% 65% / 0.3)',
     image: serviceAi,
+  },
+  {
+    title: 'Web Development & Design',
+    description: 'Stunning, high-performance websites and web applications built with modern frameworks, responsive design, and SEO best practices.',
+    features: ['Responsive Websites', 'E-Commerce Platforms', 'CMS & Dashboards', 'SEO Optimization'],
+    gradient: 'from-glow-blue to-glow-purple',
+    glowColor: 'hsl(240 100% 60% / 0.3)',
+    image: serviceWeb,
   },
   {
     title: 'App Design',
@@ -40,11 +50,10 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
       ref={ref}
       initial={{ opacity: 0, y: 80, rotateX: 5 }}
       animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
-      transition={{ duration: 1, delay: index * 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+      transition={{ duration: 1, delay: index * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
       className="glass-card glow-border group overflow-hidden transition-all duration-500 hover:-translate-y-3"
       style={{ boxShadow: `0 0 60px ${service.glowColor}` }}
     >
-      {/* Image */}
       <div className="relative h-56 overflow-hidden">
         <img
           src={service.image}
@@ -56,10 +65,10 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
       <div className="p-8 md:p-10">
         <div className={`mb-6 h-1 w-16 rounded-full bg-gradient-to-r ${service.gradient}`} />
-        <h3 className="mb-4 font-display text-3xl font-bold text-foreground md:text-4xl">
+        <h3 className="mb-4 font-display text-2xl font-bold text-foreground md:text-3xl">
           {service.title}
         </h3>
-        <p className="mb-8 text-lg leading-relaxed text-muted-foreground">
+        <p className="mb-8 text-base leading-relaxed text-muted-foreground">
           {service.description}
         </p>
         <div className="grid grid-cols-2 gap-3">
@@ -83,8 +92,7 @@ export default function ServicesSection() {
   });
 
   return (
-    <section ref={ref} className="section-padding relative overflow-hidden">
-      {/* Parallax background glow */}
+    <section id="services" ref={ref} className="section-padding relative overflow-hidden">
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -113,11 +121,23 @@ export default function ServicesSection() {
         </motion.h2>
       </motion.div>
 
-      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
+      <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
         {services.map((service, i) => (
           <ServiceCard key={service.title} service={service} index={i} />
         ))}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        className="mt-16 text-center"
+      >
+        <Link to="/services" className="btn-outline-glow inline-block">
+          View All Services
+        </Link>
+      </motion.div>
     </section>
   );
 }
