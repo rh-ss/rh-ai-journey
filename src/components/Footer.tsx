@@ -1,5 +1,6 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,10 +41,14 @@ export default function Footer() {
           © 2025 RH Software. All rights reserved.
         </p>
         <div className="flex gap-6">
-          {['Privacy', 'Terms', 'Contact'].map((link) => (
-            <a key={link} href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
-              {link}
-            </a>
+          {[
+            { label: 'Services', href: '/services' },
+            { label: 'Blog', href: '/blog' },
+            { label: 'Contact', href: '/contact' },
+          ].map((link) => (
+            <Link key={link.label} to={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+              {link.label}
+            </Link>
           ))}
         </div>
       </div>
