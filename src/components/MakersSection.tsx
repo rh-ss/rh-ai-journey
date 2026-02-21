@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import MiniScene3D from './MiniScene3D';
+import FloatingOrbs from './FloatingOrbs';
 
 const audiences = [
   { title: 'Founders', desc: 'Turn your vision into a scalable product.' },
@@ -18,12 +19,13 @@ export default function MakersSection() {
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
+      <FloatingOrbs variant="mixed" intensity={1.5} />
       {/* Parallax glow */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [100, -100]),
-          background: 'radial-gradient(ellipse at 50% 50%, hsl(260 100% 65% / 0.05), transparent 70%)',
+          y: useTransform(scrollYProgress, [0, 1], [200, -200]),
+          background: 'radial-gradient(ellipse at 50% 50%, hsl(260 100% 65% / 0.07), transparent 70%), radial-gradient(ellipse at 20% 30%, hsl(175 100% 50% / 0.05), transparent 50%)',
         }}
       />
 

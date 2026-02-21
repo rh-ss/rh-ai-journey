@@ -161,6 +161,31 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+/* Scroll snap sections */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/* Floating particle overlay */
+.floating-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  pointer-events: none;
+  will-change: transform;
+  animation: orb-float 12s ease-in-out infinite alternate;
+}
+
+@keyframes orb-float {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+  100% { transform: translate(10px, -10px) scale(1.05); }
 }
 
 /* Custom scrollbar */

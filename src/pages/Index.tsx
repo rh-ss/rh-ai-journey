@@ -14,13 +14,13 @@ const Index = () => {
     <PageTransition>
       <div className="min-h-screen bg-background">
         <Header />
-        <HeroSection />
-        <ServicesSection />
-        <AIFeaturesSection />
-        <MakersSection />
-        <PortfolioSection />
-        <WhyChooseSection />
-        <ContactSection />
+        <div className="snap-section"><HeroSection /></div>
+        <div className="snap-section"><ServicesSection /></div>
+        <div className="snap-section"><AIFeaturesSection /></div>
+        <div className="snap-section"><MakersSection /></div>
+        <div className="snap-section"><PortfolioSection /></div>
+        <div className="snap-section"><WhyChooseSection /></div>
+        <div className="snap-section"><ContactSection /></div>
         <Footer />
       </div>
     </PageTransition>

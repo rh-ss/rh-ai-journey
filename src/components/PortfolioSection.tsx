@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import FloatingOrbs from './FloatingOrbs';
 import portfolio1 from '@/assets/portfolio-1.jpg';
 import portfolio2 from '@/assets/portfolio-2.jpg';
 import portfolio3 from '@/assets/portfolio-3.jpg';
@@ -99,11 +100,12 @@ export default function PortfolioSection() {
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
+      <FloatingOrbs variant="blue" intensity={1.3} />
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [150, -150]),
-          background: 'radial-gradient(ellipse at 30% 60%, hsl(220 100% 60% / 0.05), transparent 60%), radial-gradient(ellipse at 70% 30%, hsl(175 100% 50% / 0.04), transparent 50%)',
+          y: useTransform(scrollYProgress, [0, 1], [250, -250]),
+          background: 'radial-gradient(ellipse at 30% 60%, hsl(220 100% 60% / 0.07), transparent 60%), radial-gradient(ellipse at 70% 30%, hsl(175 100% 50% / 0.06), transparent 50%)',
         }}
       />
 

@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { Send, Sparkles, CheckCircle, Loader2 } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import FloatingOrbs from './FloatingOrbs';
 
 export default function ContactSection() {
   const ref = useRef<HTMLDivElement>(null);
@@ -71,11 +72,12 @@ export default function ContactSection() {
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
+      <FloatingOrbs variant="purple" intensity={1.2} />
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [100, -100]),
-          background: 'radial-gradient(ellipse at 50% 50%, hsl(260 100% 65% / 0.04), transparent 60%)',
+          y: useTransform(scrollYProgress, [0, 1], [200, -200]),
+          background: 'radial-gradient(ellipse at 50% 50%, hsl(260 100% 65% / 0.06), transparent 60%), radial-gradient(ellipse at 80% 20%, hsl(220 100% 60% / 0.04), transparent 50%)',
         }}
       />
 

@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import FloatingOrbs from './FloatingOrbs';
 import serviceAi from '@/assets/service-ai.jpg';
 import serviceApp from '@/assets/service-app.jpg';
 import serviceSoftware from '@/assets/service-software.jpg';
@@ -93,11 +94,12 @@ export default function ServicesSection() {
 
   return (
     <section id="services" ref={ref} className="section-padding relative overflow-hidden">
+      <FloatingOrbs variant="purple" intensity={1.2} />
       <motion.div
         className="absolute inset-0 pointer-events-none"
         style={{
-          y: useTransform(scrollYProgress, [0, 1], [200, -200]),
-          background: 'radial-gradient(ellipse at 50% 40%, hsl(260 100% 65% / 0.06), transparent 70%)',
+          y: useTransform(scrollYProgress, [0, 1], [300, -300]),
+          background: 'radial-gradient(ellipse at 50% 40%, hsl(260 100% 65% / 0.08), transparent 70%), radial-gradient(ellipse at 80% 70%, hsl(220 100% 60% / 0.05), transparent 50%)',
         }}
       />
 
