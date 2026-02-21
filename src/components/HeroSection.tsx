@@ -18,16 +18,20 @@ export default function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const marqueeX = useTransform(scrollYProgress, [0, 1], ["0%", "-50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
-  const y = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
+  const marqueeX = useTransform(scrollYProgress, [0, 1], ["0%", "-60%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, -120]);
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 200]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
 
   return (
     <section ref={ref} className="relative min-h-[200vh]">
       {/* Sticky hero content */}
       <div className="sticky top-0 h-screen overflow-hidden">
-        <Scene3D />
+        <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
+          <Scene3D />
+        </motion.div>
 
         {/* Gradient overlays */}
         <div className="absolute inset-0 z-[1] bg-gradient-to-b from-background/40 via-transparent to-background" />

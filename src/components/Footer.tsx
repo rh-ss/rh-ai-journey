@@ -1,24 +1,33 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 
 export default function Footer() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+
+  const textScale = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
 
   return (
     <footer ref={ref} className="relative overflow-hidden px-6 py-32">
       {/* Glow */}
-      <div className="absolute inset-0" style={{
-        background: 'radial-gradient(ellipse at 50% 80%, hsl(260 100% 65% / 0.06), transparent 60%)',
-      }} />
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          y: useTransform(scrollYProgress, [0, 1], [80, 0]),
+          background: 'radial-gradient(ellipse at 50% 80%, hsl(260 100% 65% / 0.08), transparent 60%)',
+        }}
+      />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1 }}
+        style={{ scale: textScale, opacity: textOpacity }}
         className="relative z-10 text-center"
       >
-        <h2 className="font-display text-7xl font-bold uppercase tracking-tight text-foreground md:text-[10rem] lg:text-[14rem]">
+        <h2 className="font-display text-7xl font-bold uppercase tracking-tight text-foreground glow-text md:text-[10rem] lg:text-[14rem]">
           RH
         </h2>
         <h2 className="font-display text-5xl font-bold uppercase tracking-tight text-foreground/20 md:text-7xl lg:text-9xl">

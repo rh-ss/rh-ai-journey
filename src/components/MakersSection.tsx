@@ -1,5 +1,6 @@
 import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import MiniScene3D from './MiniScene3D';
 
 const audiences = [
   { title: 'Founders', desc: 'Turn your vision into a scalable product.' },
@@ -10,13 +11,26 @@ const audiences = [
 export default function MakersSection() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
 
   return (
     <section ref={ref} className="section-padding relative overflow-hidden">
-      {/* Background glow */}
-      <div className="absolute inset-0" style={{
-        background: 'radial-gradient(ellipse at 50% 50%, hsl(260 100% 65% / 0.04), transparent 70%)',
-      }} />
+      {/* Parallax glow */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          y: useTransform(scrollYProgress, [0, 1], [100, -100]),
+          background: 'radial-gradient(ellipse at 50% 50%, hsl(260 100% 65% / 0.05), transparent 70%)',
+        }}
+      />
+
+      {/* 3D Background Element */}
+      <div className="absolute inset-0 opacity-30">
+        <MiniScene3D variant="grid" className="h-full w-full" />
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -36,13 +50,13 @@ export default function MakersSection() {
           {audiences.map((a, i) => (
             <motion.div
               key={a.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 + i * 0.15 }}
-              className="group"
+              transition={{ duration: 0.7, delay: 0.3 + i * 0.15, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="glass-card group p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_40px_hsl(260_100%_65%/0.15)]"
             >
-              <h3 className="mb-3 font-display text-4xl font-bold text-foreground transition-colors group-hover:text-gradient md:text-5xl">
-                {a.title}
+              <h3 className="mb-3 font-display text-4xl font-bold text-foreground md:text-5xl">
+                <span className="text-gradient">{a.title}</span>
               </h3>
               <p className="text-muted-foreground">{a.desc}</p>
             </motion.div>
