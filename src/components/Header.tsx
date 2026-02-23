@@ -34,9 +34,9 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={rhLogo} alt="RH Software" className="h-14 w-auto" />
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
+        <Link to="/" className="flex items-center gap-2 shrink-0">
+          <img src={rhLogo} alt="RH Software" className="h-10 w-auto md:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -53,10 +53,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
           <Link
             to="/contact"
-            className="rounded-full border border-border/50 px-6 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_20px_hsl(260_100%_65%/0.2)]"
+            className="hidden rounded-full border border-border/50 px-6 py-2 text-sm font-medium text-foreground transition-all duration-300 hover:border-primary/50 hover:shadow-[0_0_20px_hsl(260_100%_65%/0.2)] sm:inline-block"
           >
             Contact Us
           </Link>
