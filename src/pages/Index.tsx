@@ -8,6 +8,7 @@ import WhyChooseSection from '../components/WhyChooseSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import PageTransition from '../components/PageTransition';
+import FloatingContactButtons from '../components/FloatingContactButtons';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
         <div className="snap-section"><WhyChooseSection /></div>
         <div className="snap-section"><ContactSection /></div>
         <Footer />
+        <FloatingContactButtons />
       </div>
     </PageTransition>
   );

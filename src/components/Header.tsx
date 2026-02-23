@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
+import rhLogo from '@/assets/rh-logo.png';
 
 const navItems = [
   { label: 'Services', href: '/services' },
@@ -34,8 +35,8 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link to="/" className="font-display text-xl font-bold text-foreground">
-          RH SOFTWARE
+        <Link to="/" className="flex items-center gap-2">
+          <img src={rhLogo} alt="RH Software" className="h-10 w-auto" />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

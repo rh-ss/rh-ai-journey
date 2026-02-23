@@ -51,17 +51,35 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 1 }}
             className="max-w-5xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-8xl"
           >
-            Engineering the Future with{' '}
-            <span className="text-gradient">AI & Digital Innovation</span>
+            Building the Future with{' '}
+            <span className="text-gradient">AI & Smart Technology</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground/70 md:text-lg"
           >
-            RH Software builds intelligent solutions that transform businesses through AI, web, mobile, and software technologies.
+            AI और स्मार्ट तकनीक के साथ भविष्य का निर्माण
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+          >
+            We transform ideas into powerful digital solutions.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+            className="mt-2 max-w-2xl text-base leading-relaxed text-muted-foreground/70 md:text-lg"
+          >
+            हम आपके विचारों को शक्तिशाली डिजिटल समाधानों में बदलते हैं।
           </motion.p>
 
           <motion.div

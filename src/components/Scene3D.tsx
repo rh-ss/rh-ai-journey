@@ -60,8 +60,6 @@ function Particles() {
 
 function WireframeShapes() {
   const torusRef = useRef<THREE.Mesh>(null!);
-  const octaRef = useRef<THREE.Mesh>(null!);
-  const icoRef = useRef<THREE.Mesh>(null!);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
@@ -69,37 +67,15 @@ function WireframeShapes() {
       torusRef.current.rotation.x = t * 0.15;
       torusRef.current.rotation.y = t * 0.1;
     }
-    if (octaRef.current) {
-      octaRef.current.rotation.y = t * 0.2;
-      octaRef.current.rotation.z = t * 0.1;
-    }
-    if (icoRef.current) {
-      icoRef.current.rotation.x = t * 0.12;
-      icoRef.current.rotation.z = t * 0.08;
-    }
   });
 
   return (
-    <>
-      <Float speed={1.5} rotationIntensity={0.3} floatIntensity={1.5}>
-        <mesh ref={torusRef} position={[4, 1, -3]}>
-          <torusGeometry args={[1.2, 0.15, 16, 40]} />
-          <meshBasicMaterial color="#7c3aed" wireframe transparent opacity={0.25} />
-        </mesh>
-      </Float>
-      <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-        <mesh ref={octaRef} position={[-4.5, -1.5, -2]}>
-          <octahedronGeometry args={[1, 0]} />
-          <meshBasicMaterial color="#3b82f6" wireframe transparent opacity={0.2} />
-        </mesh>
-      </Float>
-      <Float speed={1.2} rotationIntensity={0.4} floatIntensity={2}>
-        <mesh ref={icoRef} position={[-2, 3, -4]}>
-          <icosahedronGeometry args={[0.8, 1]} />
-          <meshBasicMaterial color="#06b6d4" wireframe transparent opacity={0.2} />
-        </mesh>
-      </Float>
-    </>
+    <Float speed={1.5} rotationIntensity={0.3} floatIntensity={1.5}>
+      <mesh ref={torusRef} position={[4, 1, -3]}>
+        <torusGeometry args={[1.2, 0.15, 16, 40]} />
+        <meshBasicMaterial color="#7c3aed" wireframe transparent opacity={0.2} />
+      </mesh>
+    </Float>
   );
 }
 
@@ -115,11 +91,9 @@ function GlowOrbs() {
   });
 
   const orbs = useMemo(() => [
-    { pos: [3.5, 0.5, -2] as [number, number, number], color: '#7c3aed', scale: 1 },
-    { pos: [-4.5, 1.5, -3] as [number, number, number], color: '#3b82f6', scale: 0.7 },
-    { pos: [1.5, -2.5, -4] as [number, number, number], color: '#06b6d4', scale: 0.6 },
-    { pos: [-2.5, 2.5, -1] as [number, number, number], color: '#8b5cf6', scale: 0.5 },
-    { pos: [0, -1, -5] as [number, number, number], color: '#3b82f6', scale: 0.8 },
+    { pos: [3.5, 0.5, -2] as [number, number, number], color: '#7c3aed', scale: 0.8 },
+    { pos: [-4.5, 1.5, -3] as [number, number, number], color: '#3b82f6', scale: 0.5 },
+    { pos: [0, -1, -5] as [number, number, number], color: '#06b6d4', scale: 0.6 },
   ], []);
 
   return (
