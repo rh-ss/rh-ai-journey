@@ -109,6 +109,19 @@ function GlowOrbs() {
 }
 
 export default function Scene3D() {
+  // Disable 3D on low-end mobile devices to avoid gray background
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+  if (isMobile) {
+    return (
+      <div className="absolute inset-0 z-0 bg-background">
+        <div className="absolute inset-0" style={{
+          background: 'radial-gradient(ellipse at 50% 40%, hsl(260 100% 65% / 0.15), transparent 60%), radial-gradient(ellipse at 80% 20%, hsl(220 100% 60% / 0.1), transparent 50%), radial-gradient(ellipse at 20% 80%, hsl(175 100% 50% / 0.08), transparent 50%)',
+        }} />
+      </div>
+    );
+  }
+
   return (
     <div className="absolute inset-0 z-0">
       <Canvas
