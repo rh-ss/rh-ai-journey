@@ -12,7 +12,7 @@ interface Message {
 export default function AIChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: "Hi! 👋 I'm the **RH Software AI Assistant**. How can I help you today?\n\nI can help with:\n- 🌐 Web & Mobile Development\n- 🤖 AI Solutions\n- 💰 Project Estimates\n- ❓ General Questions" },
+    { role: 'assistant', content: "Hi! 👋 I'm **Kira AI**, your smart assistant. How can I help you today?\n\nI can help with:\n- 🌐 Web & Mobile Development\n- 🤖 AI Solutions\n- 💰 Project Estimates\n- ❓ General Questions" },
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ export default function AIChatWidget() {
       {/* Toggle Button */}
       <motion.button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-[7.5rem] right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow max-sm:bottom-[6.5rem] max-sm:right-4 max-sm:h-12 max-sm:w-12"
+        className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow max-sm:bottom-20 max-sm:right-4 max-sm:h-12 max-sm:w-12"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Toggle AI Chat"
@@ -81,8 +81,8 @@ export default function AIChatWidget() {
                 <Sparkles size={18} className="text-primary" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-foreground">RH Software AI</p>
-                <p className="text-xs text-muted-foreground">Powered by AI • Always here to help</p>
+                <p className="text-sm font-semibold text-foreground">Kira AI</p>
+                <p className="text-xs text-muted-foreground">Powered by RH Software • Always here to help</p>
               </div>
             </div>
 
