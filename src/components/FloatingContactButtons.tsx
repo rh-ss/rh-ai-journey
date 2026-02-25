@@ -5,7 +5,7 @@ const PHONE_NUMBER = '+919342470019';
 
 export default function FloatingContactButtons() {
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-sm:bottom-4 max-sm:right-4 max-sm:gap-2 max-sm:mb-16">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3 max-sm:bottom-4 max-sm:right-4 max-sm:gap-2">
       <motion.a
         href={`https://wa.me/${PHONE_NUMBER.replace(/[^0-9]/g, '')}`}
         target="_blank"
