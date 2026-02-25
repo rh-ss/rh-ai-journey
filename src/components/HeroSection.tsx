@@ -49,7 +49,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 1 }}
-            className="max-w-5xl font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-8xl"
+            className="max-w-5xl font-display text-3xl font-bold leading-[1.1] tracking-tight text-foreground sm:text-5xl md:text-7xl lg:text-8xl"
           >
             Building the Future with{' '}
             <span className="text-gradient">AI & Smart Technology</span>
@@ -59,7 +59,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground/70 md:text-lg"
+            className="mt-3 max-w-2xl text-sm leading-relaxed text-muted-foreground/70 md:text-lg"
           >
             AI और स्मार्ट तकनीक के साथ भविष्य का निर्माण
           </motion.p>
@@ -68,7 +68,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl"
+            className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-xl"
           >
             We transform ideas into powerful digital solutions.
           </motion.p>
@@ -77,7 +77,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.8 }}
-            className="mt-2 max-w-2xl text-base leading-relaxed text-muted-foreground/70 md:text-lg"
+            className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground/70 md:text-lg"
           >
             हम आपके विचारों को शक्तिशाली डिजिटल समाधानों में बदलते हैं।
           </motion.p>
@@ -86,7 +86,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.8 }}
-            className="mt-12 flex flex-col gap-4 sm:flex-row"
+            className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-4"
           >
             <Link to="/contact" className="btn-glow text-primary-foreground">
               Start Your Project
