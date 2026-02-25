@@ -47,7 +47,7 @@ export default function AIChatWidget() {
       {/* Toggle Button */}
       <motion.button
         onClick={() => setOpen(!open)}
-        className="fixed bottom-24 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow max-sm:bottom-20 max-sm:right-4 max-sm:h-12 max-sm:w-12"
+        className="fixed bottom-[7.5rem] right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow max-sm:bottom-[6.5rem] max-sm:right-4 max-sm:h-12 max-sm:w-12"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         aria-label="Toggle AI Chat"
